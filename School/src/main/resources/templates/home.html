@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>School Admin System</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Sidebar -->
+        <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+            <div class="position-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about:blank" target="mainFrame">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/students/new" target="mainFrame">Add New Students</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/students/list" target="mainFrame">Students List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/courses/new" target="mainFrame">Add New Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/courses/list" target="mainFrame">Courses List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/scores/new" target="mainFrame">Add New Results</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/scores/list" target="mainFrame">Result List</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main content -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <iframe name="mainFrame" id="mainFrame" frameborder="0" width="100%" height="500">Welcome School Admin System</iframe>
+        </main>
+    </div>
+</div>
+
+<!-- Bootstrap JS (optional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

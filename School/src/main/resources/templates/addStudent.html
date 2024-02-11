@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>School Admin System</title>
+	<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div class="ol-lg col-md col-sm container justify-content-center card">
+				<h3 class="text-center">Add New Student</h3>
+				<div class="card-body">
+					<form id="addNewStudentForm" name="addNewStudentForm" th:action="@{/students/list}" th:object="${student}" method="POST">
+						<div class="form-group">
+							<label>First Name</label>
+							<input class="form-control" type="text" name="firstName" th:field="*{firstName}"
+								placeholder="Enter Your First Name" required/>
+						</div>
+
+						<div class="form-group">
+							<label>Family Name</label>
+							<input class="form-control" type="text" name="familyName" th:field="*{familyName}"
+								placeholder="Enter Your Family Name" required/>
+						</div>
+
+						<div class=" form-group">
+							<label>Date Of Birth</label>
+								
+							<div id="date-picker" name="date-picker" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+  								<input type="date" placeholder="Enter Date Of Birth" id="dateOfBirth" name="dateOfBirth" th:field="*{dateOfBirth}" class="form-control" required/>
+ 							 	<i class="fas fa-calendar input-prefix"></i>
+								<div id="dateOfBirthError" class="invalid-feedback"></div>
+							</div>
+								
+								
+						</div>
+
+						<div class=" form-group">
+							<label>Email</label>
+							<input class="form-control" type="email" name="email" id="email" th:field="*{email}"
+								placeholder="Enter email" required/>
+							<div id="emailError" class="invalid-feedback"></div>
+						</div>
+						<br>
+						<div class="box-footer">
+							<button type="submit" class="btn btn-primary"> Submit </button>
+						</div>
+
+					</form>
+					<br>
+					<p class="text-success" style="text-align: center;" th:text="${message}"></p>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Bootstrap JS (optional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script>
+	document.querySelector("#addNewStudentForm").addEventListener("submit", function(e){
+		
+	$('.form-control').removeClass('is-invalid');
+    $('.invalid-feedback').hide();
+    
+    if(!calculateAge() || !isValidEmail()){
+        e.preventDefault();    //stop form from submitting
+    }
+});
+	
+function calculateAge() {
+        // Get the selected date of birth
+        var dob = new Date($("#dateOfBirth").val());
+
+        if (dob) {
+            // Set the minimum age (adjust as needed)
+            var minimumAge = 10;
+
+            // Calculate age
+            var today = new Date();
+            var age = today.getFullYear() - dob.getFullYear();
+
+            // Check if birthday has occurred this year
+            if (today.getMonth() < dob.getMonth() || (today.getMonth() === dob.getMonth() && today.getDate() < dob.getDate())) {
+                age--;
+            }
+
+            // Check if age is above the minimum age
+            if (age >= minimumAge) {
+                // Display the calculated age
+                // $("#ageOutput").text("Age: " + age + " years");
+            } else {
+                $("#dateOfBirth").addClass('is-invalid');
+      			$('#dateOfBirthError').text("Student must be at least 10 years old");
+      			$('#dateOfBirthError').show();
+                return false;
+            }
+        } else {
+            $('#dateOfBirth').addClass('is-invalid');
+      		$('#dateOfBirthError').text("Please enter valid date");
+      		$('#dateOfBirthError').show();
+            return false;
+        }
+        return true;
+    }
+    
+    function isValidEmail() {
+        // Use a simple regex for email validation
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var vld = emailRegex.test($("#email").val());
+        if(!vld) {
+			$('#email').addClass('is-invalid');
+			$('#emailError').text("Please enter valid email");
+      		$('#emailError').show();
+		}
+        
+        return vld;
+    }
+</script>
+
+</body>
+
+</html>

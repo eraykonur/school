@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>School Admin System</title>
+	<!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div class="ol-lg col-md col-sm container justify-content-center card">
+				<h3 class="text-center">Add New Results</h3>
+				<div class="card-body">
+					<form th:action="@{/scores/list}" th:object="${score}" method="POST">
+						<div class="form-group">
+							<label>Full Name</label>
+<!--							<input class="form-control" type="text" name="studentId" -->
+<!--								placeholder="Enter Full Name" />-->
+						
+							<select name="studentId" class="form-control" required>
+								<option th:each="student: ${students}" th:value="${student.id}" th:text="${student.firstName} + ' ' + ${student.familyName}"></option> 
+							</select>
+						
+						</div>
+
+						<div class=" form-group">
+							<label>Course Name</label>
+<!--							<input class="form-control" type="text" name="courseId" -->
+<!--								placeholder="Enter Course Name" />-->
+								
+							<select name="courseId" class="form-control" required>
+							<option th:each="course: ${courses}" th:value="${course.id}" th:text="${course.name}"></option> 
+							</select>
+								
+						</div>
+
+						<div class=" form-group">
+							<label>Score</label>
+							<select name="scoreValue" class="form-control" required>
+								<option>A</option>
+						 		<option>B</option>
+						 		<option>C</option>
+						 		<option>D</option>
+						 		<option>E</option>
+						 		<option>F</option>
+							</select>
+						</div>
+						<br>
+						<div class="box-footer">
+							<button type="submit" class="btn btn-primary"> Submit </button>
+						</div>
+
+					</form>			
+					<br>
+					<p class="text-success" style="text-align: center;" th:text="${message}"></p>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- Bootstrap JS (optional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

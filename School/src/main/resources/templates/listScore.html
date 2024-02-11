@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>School Admin System</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+
+
+	<div class="container">
+		<div class="row" style="text-align: center;">
+			<h2>Result List</h2>
+		</div>
+<!--		<div class="row">-->
+<!--			<div class="col-lg-3">-->
+<!--				<a class="btn btn-primary btn-sm mb3" th:href="@{/scores/new}"> Add Score </a>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--		<br>-->
+		<div>
+			<table class="table table-striped table-hover">
+				<thead class="table-light">
+					<tr>
+						<th scope="col">Full Name</th>
+						<th scope="col">Course Name</th>
+						<th scope="col">Score</th>
+						<th scope="col">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="score: ${scores}">
+						
+						
+						<td th:text="${score.student.firstName} + ' ' + ${score.student.familyName}"></td>
+						<td th:text="${score.course.name}"></td>
+						<td th:text="${score.value}"></td>
+						<td>
+<!--							<a th:href="@{/scores/edit/{id}(id=${score.id})}" class="btn btn-primary">-->
+<!--							Update-->
+<!--							</a>-->
+							
+							<a th:href="@{/scores/delete/{id}(id=${score.id})}">
+							<button type="button" class="btn-close" aria-label="Delete"></button>
+							</a>
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
+			</table>
+		</div>
+	</div>
+<!-- Bootstrap JS (optional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
