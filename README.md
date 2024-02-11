@@ -3,7 +3,7 @@
 #web server port . You can change it if you want
 server.port=8888
 
-#DB create with code : mysql> CREATE DATABASE db_school;
+#create DB with code : mysql> CREATE DATABASE db_school;
 
 #DB url
 spring.datasource.url=jdbc:mysql://localhost:3306/db_school
