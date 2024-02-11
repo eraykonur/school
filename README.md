@@ -1,6 +1,6 @@
 #CONFIGURATON FILE -> PATH : /src/main/resources/application.properties
 
-#serve port . You can change it if you want
+#server port . You can change it if you want
 server.port=8888
 
 #Database Configrations
