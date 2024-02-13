@@ -1,5 +1,3 @@
-create DB with code : mysql> CREATE DATABASE db_school;
-
 Configuration File Path -> /src/main/resources/application.properties
 
 web server port -> server.port=8888
